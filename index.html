@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Tombol Unik</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #buttonContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .generatedButton {
+            background: linear-gradient(45deg, #ff512f, #dd2476);
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+        .generatedButton:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #24c6dc, #514a9d);
+        }
+        #generateBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #00c6ff;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            border: none;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        #generateBtn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Generator Tombol Unik</h1>
+<div id="buttonContainer"></div>
+<button id="generateBtn">Generate Tombol</button>
+
+<script>
+    const buttonContainer = document.getElementById('buttonContainer');
+    const generateBtn = document.getElementById('generateBtn');
+
+    generateBtn.addEventListener('click', () => {
+        const newButton = document.createElement('button');
+        newButton.className = 'generatedButton';
+        
+        const teksAcak = ["Klik Aku!", "Coba Tekan!", "Tombol Rahasia", "Klik Disini", "Ayo Pencet", "Tombol Ajaib"];
+        const randomTeks = teksAcak[Math.floor(Math.random() * teksAcak.length)];
+        
+        newButton.textContent = randomTeks;
+        
+        newButton.addEventListener('click', () => {
+            alert(`Kamu menekan: "${randomTeks}"`);
+        });
+
+        buttonContainer.appendChild(newButton);
+    });
+</script>
+
+</body>
+</html>
