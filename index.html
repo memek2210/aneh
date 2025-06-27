@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generate Tombol Unik</title>
+    <title>Generate Tombol + Iklan Timer</title>
     <style>
         body {
             background: linear-gradient(135deg, #2c3e50, #4ca1af);
@@ -55,6 +55,11 @@
         #generateBtn:hover {
             transform: scale(1.05);
         }
+        #timerBox {
+            margin-top: 20px;
+            font-size: 18px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -62,12 +67,19 @@
 <h1>Generator Tombol Unik</h1>
 <div id="buttonContainer"></div>
 <button id="generateBtn">Generate Tombol</button>
+<div id="timerBox">Tunggu sebentar... 10 detik</div>
 
 <script>
     const buttonContainer = document.getElementById('buttonContainer');
     const generateBtn = document.getElementById('generateBtn');
+    const timerBox = document.getElementById('timerBox');
+    let clickCount = 0;
+
+    const directLink = "https://www.profitableratecpm.com/xvfsmj1fa?key=11636550b6bb42553c03072f4da609bd"; // GANTI dengan directlink Adsterra kamu
 
     generateBtn.addEventListener('click', () => {
+        clickCount++;
+
         const newButton = document.createElement('button');
         newButton.className = 'generatedButton';
         
@@ -81,6 +93,22 @@
         });
 
         buttonContainer.appendChild(newButton);
+
+        if (clickCount === 10) {
+            timerBox.style.display = "block";
+            let countdown = 10;
+            timerBox.textContent = `Tunggu sebentar... ${countdown} detik`;
+
+            const interval = setInterval(() => {
+                countdown--;
+                timerBox.textContent = `Tunggu sebentar... ${countdown} detik`;
+
+                if (countdown === 0) {
+                    clearInterval(interval);
+                    window.location.href = directLink;
+                }
+            }, 1000);
+        }
     });
 </script>
 
